@@ -2,14 +2,15 @@
 
 MD-FDRI stands for Map-based, Differential, Fourier Domain Regularized Inversion. MD-FDRI is a framework for
  Single-Pixel Imaging (SPI) applicable at high resolutions and high compression. MDFDRI code accompanies the Opt. Express 30, 22730, 2022 paper
-by R.Stojek, A. Pastuszczak, P. Wróbel and R. Kotyński on single-pixel imaging at high resolutions
+by R.Stojek, A. Pastuszczak, P. Wróbel and R. Kotyński on single-pixel imaging at high resolutions:
 
 https://doi.org/10.1364/OE.460025
 
 https://doi.org/10.6084/m9.figshare.19863556
 
-The MDFDRI class definition is included in the mdfdri.py file. 
-example_mdfdri_animation.py is an example program which demonstrates the use of the MDFRI class. It runs a simulation of a sequence of SPI measurements with compressive measurements conducted through a varied aperture. As a result it produces an animation and figures with 
-examples of the sampling functions and image maps which were used.
+The MDFDRI class definition is included in the _mdfdri.py_ file, and 
+_example_mdfdri_animation.py_ is an example program which demonstrates the use of the MDFRI class. This example includes a simulation of a sequence of SPI measurements with compressive measurements conducted through a varied aperture. As a result it produces an animation and figures with examples of the sampling functions and image maps which were used.
 
-MDFDRI needs huge (2x9.4GB) image sampling and reconstruction matrices, which we will first try to load from a compressed file in current directory, secondly to download from a repository, and third to recalculate. We recommend having a fast SDD drive and 32GB RAM for executing this example program, and  128GB memory and a reasonable swap file for matrix recalculation. When the matrices are loaded to RAM, the SPI image reconstruction at the resolution of 1024x768, depending on the CPU takes between 0.3-1s per frame.
+MDFDRI needs huge (2x9.4GB) image sampling and reconstruction matrices, which we will first try to load from a compressed file in the current directory, secondly to download from a repository, and third to recalculate. We recommend having a fast SDD and 32GB RAM for executing this example program, and 128GB memory and a reasonable swap file for matrix recalculation. When the matrices are loaded to RAM, the SPI image reconstruction at the resolution of 1024x768 and sampling ratio of 0.4% is relatively fast, and depending on the CPU takes between 0.3-1s per frame.
+
+The advantages of MD-FDRI are that it combines several features important for realistic optical SPI at high resolutions. Sampling functions are binary and can be directly displayed on optical modulators such as digital micromirror devices (DMD) at their native resolution. The measurement is inherently differential and the reconstructed images are not affected by a constant bias added to the measurement signal for instance due to a bias signal from background illumination or due to the detector dark current. Sampling is non-adaptive (and adaptive sampling at the DMD operating frequency of >20kHz is in practice problematic). It works at very strong compression (eg. <0.5%) so the image aquisition time may be kept at over 5fps, and still the reconstruction time is below 1s even without GPU accelaration. Extremely strong compression implies poor image quality but the MD-FDRI framework works well after limiting the field of view (but with the same nonadaptive sampling kept). So we can point the aperture at a point of interest and get an improved image quality at that location. On top of this, the distribution of measurement points within a single measurement assures a better entropy than is obtained with many other methods. This in particular enables to use simpler A/D convertors (eg. 8bit DACs) to capture the measurement. 
