@@ -67,8 +67,8 @@ def mdfdri_animation_example(mdfdri, fname, animation_fname,
     M = mdfdri.matrices['M']  # Measurement matrix
     k, n = M.shape
     dim = tuple(mdfdri.dim)
-    print(f'\nMeasurement matrix size:{k,n}\n\
-            Image size:{dim}\nCompression ratio:{round(100*k/n,2)}%\n')
+    print(f'\nMeasurement matrix size:{k,n}\n"+\
+            f"Image size:{dim}\nCompression ratio:{round(100*k/n,2)}%\n')
     # Compile numba function
     _ = mdfdri.reconstr_algorithm(np.zeros(k, dtype=np.float32))
 
@@ -100,14 +100,17 @@ def mdfdri_animation_example(mdfdri, fname, animation_fname,
                 img1, = ax1.plot(y, '.')
                 ax1.axes.get_yaxis().set_visible(False)
                 ax1.set_title(
-                    f'Measurement\n CR={round(100*M.shape[0]/M.shape[1],1)}%')
+                    "Compressive measurement\nCompression ratio=" +
+                    f"{round(100*M.shape[0]/M.shape[1],2)}%")
                 img2 = ax2.imshow(reconstructed_imag.reshape(dim),
                                   origin='upper',
                                   vmax=vm, vmin=0, cmap=palette)
                 psnr_criterium = psnr(whole_imag, reconstructed_imag)
 
-                ax2.set_title(f'Reconstructed image\nPSNR=\
-                              {round(psnr_criterium,1)}dB, dt={round(dt,2)}ms')
+                ax2.set_title(
+                    "Reconstructed image\n" +
+                    f"PSNR={round(psnr_criterium, 1)}dB,\n" +
+                    f"reconst. time={round(dt, 2)}ms")
                 writer.grab_frame()
             else:  # subsequent frames
                 # IMAGE MEASUREMENT AND RECONSTRUCTION
@@ -125,8 +128,10 @@ def mdfdri_animation_example(mdfdri, fname, animation_fname,
                 psnr_criterium = psnr(
                     whole_imag[mask], reconstructed_imag[mask])
 
-                ax2.set_title(f'Reconstructed image\nPSNR=\
-                              {round(psnr_criterium,1)}dB, dt={round(dt,2)}ms')
+                ax2.set_title(
+                    "Reconstructed image\n" +
+                    f"PSNR={round(psnr_criterium, 1)}dB,\n" +
+                    f"reconst. time={round(dt, 2)}ms")
                 writer.grab_frame()
 
 
@@ -144,7 +149,7 @@ def mdfdri_example(matrices_filename="matrices_768_1024.npz", verbose=True):
     print("https://doi.org/10.6084/m9.figshare.19863556")
     print("\n")
 
-    print("MDFDRI needs huge (2x7GB) image sampling and reconstruction")
+    print("MDFDRI needs huge (2x9.4GB) image sampling and reconstruction")
     print(" matrices, which we will first try to load from the current")
     print(" directory, secondly to download from a repository, and third to")
     print(" recalculate. We recommend having at least 128GB memory")
@@ -174,7 +179,6 @@ def mdfdri_example(matrices_filename="matrices_768_1024.npz", verbose=True):
     fig2_fname = "fig_sampling_patterns.jpg"
     print(f"Plot some sampling patterns and save the figure to {fig2_fname}\n")
     mdfdri.show_sampling_patterns(fig_fname=fig2_fname)
-
 
     return mdfdri
 

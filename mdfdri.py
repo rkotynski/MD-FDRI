@@ -280,8 +280,8 @@ class MDFDRI:
             self.matrices['Maps'] = Maps
             self.matrices['P'] = None
             newly_calculated = True
-            if save and newly_calculated:
-                self.save_matrices()
+            # if save and newly_calculated:
+            #    self.save_matrices()
         if self.verbose:
             print("Fixing matrix representation...")
         self.matrices['Maps'] = list(self.matrices['Maps'])
