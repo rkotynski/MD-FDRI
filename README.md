@@ -12,7 +12,4 @@ The MDFDRI class definition is included in the mdfdri.py file.
 example_mdfdri_animation.py is an example program which demonstrates the use of the MDFRI class. It runs a simulation of a sequence of SPI measurements with compressive measurements conducted through a varied aperture. As a result it produces an animation and figures with 
 examples of the sampling functions and image maps which were used.
 
-MDFDRI needs huge (2x7GB) image sampling and reconstruction matrices, which we will first try to load from the current
- directory, secondly to download from a repository, and third to recalculate. We recommend having at least 128GB memory
- and a reasonable swap file for matrix recalculation. A fast SDD drive and 32GB RAM is needed for executing this 
- example program.
+MDFDRI needs huge (2x9.4GB) image sampling and reconstruction matrices, which we will first try to load from a compressed file in current directory, secondly to download from a repository, and third to recalculate. We recommend having a fast SDD drive and 32GB RAM for executing this example program, and  128GB memory and a reasonable swap file for matrix recalculation.
