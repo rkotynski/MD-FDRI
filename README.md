@@ -4,6 +4,7 @@ MD-FDRI stands for Map-based, Differential, Fourier Domain Regularized Inversion
  Single-Pixel Imaging (SPI) applicable at high resolutions and high compression. MDFDRI code accompanies the Opt. Express 30, 22730, 2022 paper
 by R.Stojek, A. Pastuszczak, P. Wróbel and R. Kotyński on single-pixel imaging at high resolutions
 https://doi.org/10.1364/OE.460025
+
 https://doi.org/10.6084/m9.figshare.19863556
 
 The MDFDRI class definition is included in the mdfdri.py file. 
