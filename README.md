@@ -22,7 +22,7 @@ Sample 31-level 1024x768 image maps used during the creation of the sampling fun
 Examples of 1024x768 binary sampling patterns used in the compressive measurement:
 ![](readme/fig_sampling_patterns.jpg)
 
-Animated sequence of SPI measurements conducted at the resolution of 1024x768 with a changing field of view. Reducing the field of view improves the reconstruction quality (reconstruction times are obtained with a Ryzen 3800X CPU.)
+Animated sequence of SPI measurements conducted at the resolution of 1024x768 with a changing field of view. Reducing the field of view improves the reconstruction quality (reconstruction times are obtained with a i7-11700K CPU.)
 ![](readme/mdfdri_animation_768_1024.gif)
 
 
