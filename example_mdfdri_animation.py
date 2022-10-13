@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 import matplotlib
-matplotlib.use("Agg")
+
 
 
 def psnr(orig, tstimg, decimal_points=2):
@@ -67,11 +67,11 @@ def mdfdri_animation_example(mdfdri, fname, animation_fname,
     M = mdfdri.matrices['M']  # Measurement matrix
     k, n = M.shape
     dim = tuple(mdfdri.dim)
-    print(f'\nMeasurement matrix size:{k,n}\n"+\
-            f"Image size:{dim}\nCompression ratio:{round(100*k/n,2)}%\n')
+    print(f"\nMeasurement matrix size:{k,n}\n" +
+          f"Image size:{dim}\nCompression ratio:{round(100*k/n,2)}%\n")
     # Compile numba function
     _ = mdfdri.reconstr_algorithm(np.zeros(k, dtype=np.float32))
-
+    matplotlib.use("Agg")
     fig, ax = plt.subplots(1, 3, figsize=(12, 5))
     ax0, ax1, ax2 = ax
     palette = plt.cm.bone.with_extremes(bad='tab:brown', over='y')

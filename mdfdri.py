@@ -189,24 +189,26 @@ class MDFDRI:
         """
         if map_no_lst is None:
             n = 5
-            map_no_lst = [np.random.randint(0, len(self.matrices['Maps'])-1
-                                            ) for i in range(n)]
+            map_lst = [np.random.randint(0, len(self.matrices['Maps'])-1
+                                         ) for i in range(n)]
         else:
             n = len(map_no_lst)
+            map_lst = map_no_lst
+        map_lst = sorted(list(set(map_lst)))
 
         fig, axs = plt.subplots(1, n, figsize=(5*n, 5))
         for i in range(n):
-            map_no = map_no_lst[i]
+            map_no = map_lst[i]
             drawn_map = self.matrices['Maps'][map_no]
-            m = drawn_map.max()
+            m = drawn_map.max()+1
             cmap = plt.cm.get_cmap('RdYlBu', m)
             ax = axs[i]
             pcm = ax.imshow(drawn_map+1, cmap=cmap, vmin=1, vmax=m,
                             origin='lower')
             ax.set_title(f"Image map {map_no}/{len(self.matrices['Maps'])}")
             fig.colorbar(pcm, ax=ax, orientation='horizontal').set_label(
-                f'Subsets of pixels (m={m})')
-        plt.show()
+                f'Subsets of pixels ({m} regions)')
+        fig.show()
         if fig_fname is not None:
             fig.savefig(fig_fname)
 
@@ -218,23 +220,22 @@ class MDFDRI:
         """
         if patterns_no_lst is None:
             n = 5
-            patterns_no_lst = [np.random.randint(
+            patterns_lst = [np.random.randint(
                 0, self.matrices['M'].shape[0]-1) for i in range(n)]
         else:
             n = len(patterns_no_lst)
-
+            patterns_lst = patterns_no_lst
+        patterns_lst = sorted(list(set(patterns_lst)))
         fig, axs = plt.subplots(1, n, figsize=(5*n, 5))
         for i in range(n):
-            pattern_no = patterns_no_lst[i]
+            pattern_no = patterns_lst[i]
             drawn_map = self.matrices['M'][pattern_no].reshape(self.dim)
             ax = axs[i]
-            pcm = ax.imshow(drawn_map,  vmin=0, vmax=1,
-                            origin='lower')
-            ax.set_title(f"Sampling pattern \
-                         {pattern_no}/{self.matrices['M'].shape[0]}")
-            fig.colorbar(pcm, ax=ax, orientation='horizontal').set_label(
-                f'Subsets of pixels (m={2})')
-        # plt.show()
+            ax.imshow(drawn_map,  vmin=0, vmax=1,
+                      origin='lower')
+            ax.set_title("Binary sampling pattern " +
+                         f"{pattern_no}/{self.matrices['M'].shape[0]}")
+        fig.show()
         if fig_fname is not None:
             fig.savefig(fig_fname)
 
@@ -253,19 +254,20 @@ class MDFDRI:
     def download_matrices_from_repository(self):
         """Try to download matrices from repository."""
         print(f"Download precalculated matrices from {MATRICES_URL}")
-        print("(Please try to download manually if automatic download fails)")
+
         answer = input("[y/n]")
         if not(answer in ['y', 'Y']):
             return None
         url = MATRICES_URL
-
-        print(f"Downloading {url} to {self.matrices_filename}")
         try:
+            print(f"Downloading {url} to {self.matrices_filename}")
             file_name = wget.download(url=url, out=self.matrices_filename)
-            print(file_name)
+
             self.read_matrices_from_files()
         except:
-            print("Downloading failed")
+            print("Downloading failed!!")
+            print("Please try to manually download  matrices" +
+                  " from {MATRICES_URL}\n\n\n")
         return None
 
     def precalculate_missing_matrices(self, save=True):
@@ -402,7 +404,7 @@ class MDFDRI:
             print("OK")
             return True
         except:
-            print(f"Reading  {self.matrices_filename} failed")
+            print("Reading failed")
         return False
 
     def reconstr_algorithm(self, y, dcTol=.00025):
