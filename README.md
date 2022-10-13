@@ -27,5 +27,5 @@ Animated sequence of SPI measurements conducted at the resolution of 1024x768 wi
 
 
 **Citation:** *R. Stojek, A. Pastuszczak,  P. Wróbel, and R. Kotyński, "Single-pixel imaging at high pixel resolutions," Optics Express, vol. 30(13) , pp. 22730-22745* , 10.1364/OE.460025 (open access)
-**Download**: https://github.com/rkotynski/MD-FDRI/ (GPL license) Contact: apast@igf.fuw.edu.pl, rafalk@fuw.edu.pl
+**Download**: https://github.com/rkotynski/MD-FDRI/ (GPL license) Contact: rafal.stojek@fuw.edu.pl, apast@igf.fuw.edu.pl, piotr.wrobel@fuw.edu.pl,  rafalk@fuw.edu.pl, 
 **Acknowledgement**: National Science Center (Poland), UMO-2017/27/B/ST7/00885 (RS,PW,RK), UMO-2019/35/D/ST7/03781 (AP).
