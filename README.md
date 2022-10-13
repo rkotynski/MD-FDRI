@@ -1,7 +1,7 @@
-# MD-FDRI
+# MD-FDRI - Single-Pixel Imaging (SPI) at high pixel resolutions
+R. Stojek, A. Pastuszczak, P. Wróbel, and R. Kotyński, Oct 2022, https://github.com/rkotynski/MD-FDRI/
 
-MD-FDRI stands for Map-based, Differential, Fourier Domain Regularized Inversion. MD-FDRI is a framework for
- Single-Pixel Imaging (SPI) applicable at high resolutions and high compression. MDFDRI code accompanies the Opt. Express 30, 22730, 2022 paper
+MD-FDRI stands for **Map-based, Differential, Fourier Domain Regularized Inversion**. MD-FDRI is a framework for Single-Pixel Imaging (SPI) applicable at high resolutions and high compression. MDFDRI code accompanies the Opt. Express 30, 22730, 2022 paper
 by R.Stojek, A. Pastuszczak, P. Wróbel and R. Kotyński on single-pixel imaging at high resolutions:
 
 https://doi.org/10.1364/OE.460025
@@ -24,3 +24,8 @@ Examples of 1024x768 binary sampling patterns used in the compressive measuremen
 
 Animated sequence of SPI measurements conducted at the resolution of 1024x768 with a changing field of view. Reducing the field of view improves the reconstruction quality (reconstruction times are obtained with a Ryzen 3800X CPU.)
 ![](readme/mdfdri_animation_768_1024.gif)
+
+
+**Citation:** *R. Stojek, A. Pastuszczak,  P. Wróbel, and R. Kotyński, "Single-pixel imaging at high pixel resolutions," Optics Express, vol. 30(13) , pp. 22730-22745* , 10.1364/OE.460025 (open access)
+**Download**: https://github.com/rkotynski/MD-FDRI/ (GPL license) Contact: apast@igf.fuw.edu.pl, rafalk@fuw.edu.pl
+**Acknowledgement**: National Science Center (Poland), UMO-2017/27/B/ST7/00885 (RS,PW,RK), UMO-2019/35/D/ST7/03781 (AP).
