@@ -32,4 +32,6 @@ Animated sequence of SPI measurements conducted at the resolution of 1024x768 wi
 
 **Download**: https://github.com/rkotynski/MD-FDRI/ (GPL license) Contact: rafal.stojek@fuw.edu.pl, apast@igf.fuw.edu.pl, piotr.wrobel@fuw.edu.pl,  rafalk@fuw.edu.pl, 
 
+**See also**:  https://github.com/KMCzajkowski/FDRI-single-pixel-imaging, https://github.com/rkotynski/D_FDRI (previous projects)
+
 **Acknowledgement**: National Science Center (Poland), UMO-2017/27/B/ST7/00885 (RS,PW,RK), UMO-2019/35/D/ST7/03781 (AP).
